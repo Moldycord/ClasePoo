@@ -1,16 +1,34 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 fun main() {
-    val name = "Kotlin"
-    //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-    // to see how IntelliJ IDEA suggests fixing it.
-    println("Hello, " + name + "!")
 
-    for (i in 1..5) {
-        //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-        // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-        println("i = $i")
+    val cardPersonal = CreditCard(
+        1000.0, 678163668482,
+        954, "19/11/2028"
+    )
 
-        println("Test de cambios")
+    printData(cardPersonal)
+
+    val debitCard = DebitCard(
+        2000.0, 3920103493,
+        934, "20-11-2035",
+        392324932
+    )
+
+    printData(debitCard)
+
+}
+
+fun printData(card: Card) {
+
+    println("Numero de tarjeta : ${card.noCard}")
+    println("El saldo disponible es : ${card.getBalance()}")
+    println("La fecha de vencimiento es: ${card.expireDate}")
+
+
+    if (card is DebitCard) {
+        card.accountNumber
+        println("El numero de cuenta es : ${card.accountNumber}")
+    }else if(card is CreditCard){
+        println("Esta es una tarjeta de credito")
     }
+
 }
